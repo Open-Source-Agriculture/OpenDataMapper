@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GPS-Mapper</string>
+    <string name="title_activity_maps">OpemDataMapper</string>
+    <string name="google_maps_key">AIzaSyCN_BNmAwUw8TBOJxpJUq8OcgmZUcLHylE</string>
+</resources>
