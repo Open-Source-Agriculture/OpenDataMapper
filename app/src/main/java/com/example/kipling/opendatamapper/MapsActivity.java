@@ -323,7 +323,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.d("TAG",output);
             try {
                 marker = mMap.addMarker(new MarkerOptions().position(next)
-                        .title("" + InPhase).flat(true).icon(BitmapDescriptorFactory.defaultMarker(2*(float)(InPhase))));
+                        .title("" + InPhase).flat(true).icon(BitmapDescriptorFactory.defaultMarker(8 *(float)(InPhase))));
             }catch (Exception e){
                 Log.d("TAG","Does not compute!");
             }
