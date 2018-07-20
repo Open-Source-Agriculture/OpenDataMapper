@@ -103,12 +103,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
-        // Create file
+        // Create OpenDataMapper directory in Documents directory to save files
         File myfolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        File mediaStorageDir = new File(myfolder, "OpenEMapp");
+        File mediaStorageDir = new File(myfolder, "OpenDataMapper");
 
-        // This location works best if you want the created images to be shared
-        // between applications and persist after your app has been uninstalled.
         String state = Environment.getExternalStorageState(mediaStorageDir);
         Log.d("TAG ","State: "+state);
         //Toast.makeText(getApplicationContext(), "State: "+state ,Toast.LENGTH_LONG).show();
@@ -117,23 +115,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (! mediaStorageDir.exists()){
             if (! mediaStorageDir.mkdirs()){
                 Log.d("TAG", "failed to create directory");
-                Toast.makeText(getApplicationContext(), "failed to create directory",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "failed to create directory",Toast.LENGTH_LONG).show();
             }else{
                 Log.d("TAG", "Can be created");
-                Toast.makeText(getApplicationContext(), "Can be created" ,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Can be created" ,Toast.LENGTH_LONG).show();
             }
         }else{
             Log.d("TAG", "already exists");
-            Toast.makeText(getApplicationContext(), "already exists",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "already exists",Toast.LENGTH_LONG).show();
         }
-
+        // Create file using timestamp for the file name
         try {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             output_file = new File(mediaStorageDir.getPath() + File.separator +
-                    "IMG_"+ timeStamp + ".csv");
+                    "OpenData_"+ timeStamp + ".csv");
+            Toast.makeText(getApplicationContext(), "File Created: OpenData_"+timeStamp+".csv" ,Toast.LENGTH_LONG).show();
             FileWriter writer = new FileWriter(output_file,true);
-
-            writer.append("Latitude,Longitude,Accuracy,Time,InPhase,OutPhase "+"\n");
+            // Add header to the csv
+            writer.append("Latitude,Longitude,Accuracy,Time,Data1,Data2 "+"\n");
             writer.flush();
             writer.close();
 
@@ -193,8 +192,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
+    // END OnCreate
 
 
+
+
+    // MAPS
 
     /**
      * Manipulates the map once available.
@@ -215,6 +218,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
+
+    // LOCATION
     private static final int ONE_SECOND = 1000;
 
     /** Determines whether one Location InPhase is better than the current Location fix
@@ -321,13 +326,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String output = Double.toString(lat)+ ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
 
             Log.d("TAG",output);
+            // Put pin on MAP
             try {
                 marker = mMap.addMarker(new MarkerOptions().position(next)
                         .title("" + InPhase).flat(true).icon(BitmapDescriptorFactory.defaultMarker(8 *(float)(InPhase))));
             }catch (Exception e){
                 Log.d("TAG","Does not compute!");
             }
-
+            // Log the data to file
             try {
                 Log.d("TAG","TO FILE?  "+output);
 
@@ -350,7 +356,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(geolist.size()%10 == 0) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(next));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+            //mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
         }
 
     }
@@ -359,7 +365,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-
+    // Called via UI buttons
 
     public void start(View v){
 
