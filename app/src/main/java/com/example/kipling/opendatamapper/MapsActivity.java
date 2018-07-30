@@ -132,7 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(getApplicationContext(), "File Created: OpenData_"+timeStamp+".csv" ,Toast.LENGTH_LONG).show();
             FileWriter writer = new FileWriter(output_file,true);
             // Add header to the csv
-            writer.append("Latitude,Longitude,Accuracy,Time,Data1,Data2 "+"\n");
+            writer.append("ID,Latitude,Longitude,Accuracy,Time,Data1,Data2 "+"\n");
             writer.flush();
             writer.close();
 
@@ -323,7 +323,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-            String output = Double.toString(lat)+ ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
+            String output = IDdata + ',' + Double.toString(lat)+ ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
 
             Log.d("TAG",output);
             // Put pin on MAP
