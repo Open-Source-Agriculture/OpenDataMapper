@@ -323,13 +323,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-            String output = IDdata + ',' + Double.toString(lat)+ ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
+            String output = IDdata + ',' + Double.toString(lat) + ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
 
             Log.d("TAG",output);
             // Put pin on MAP
             try {
                 marker = mMap.addMarker(new MarkerOptions().position(next)
-                        .title("" + InPhase).flat(true).icon(BitmapDescriptorFactory.defaultMarker(8 *(float)(InPhase))));
+                        .title("" + InPhase).flat(true).icon(BitmapDescriptorFactory.defaultMarker(2 *(float)(InPhase))));
             }catch (Exception e){
                 Log.d("TAG","Does not compute!");
             }
@@ -384,7 +384,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         record = true;
-        Toast.makeText(getApplicationContext(), "Start" ,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Start" ,Toast.LENGTH_LONG).show();
     }
 
     public void stop(View v){
@@ -402,7 +402,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("TAG",""+e);
-            Toast.makeText(getApplicationContext(), "Send failed" ,Toast.LENGTH_LONG).show();
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            // toast.makeText(getApplicationContext(), "Send failed" ,Toast.LENGTH_LONG).show();
         }
 
 
