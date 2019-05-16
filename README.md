@@ -4,3 +4,6 @@ The current virsion takes a string containing 2 commas that contains 1 Id field 
 eg: "45,7.32,0.12"
 
 This App is still in beta stage and will be put on the play store soon. 
+
+
+![alt text](https://github.com/KipCrossing/EMI_Field/blob/master/Cobbity8/Screenshots/OpenDataMapperScreenshot.jpeg)
