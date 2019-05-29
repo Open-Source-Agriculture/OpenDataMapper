@@ -4,6 +4,8 @@ The current virsion takes a string containing 2 commas that contains 1 Id field 
 
 eg: `45,7.32,0.12`
 
+Coloured pins are dropped at each location a sample is taken and the colour is based on the first data field.
+
 This App is currently in beta mode.
 
 
@@ -12,3 +14,4 @@ This App is currently in beta mode.
 ### To do:
 
 - Fix bluetooth not connected crash error
+- Scale colour based on data range
