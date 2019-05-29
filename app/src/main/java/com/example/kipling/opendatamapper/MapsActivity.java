@@ -323,7 +323,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-            String output = IDdata + ',' + Double.toString(lat) + ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
+            String output = Double.toString(IDdata) + ',' +  Double.toString(lat) + ',' + Double.toString(lon)+ ','+ Double.toString(accuracy) + ',' + currentTime+',' + InPhase+',' + OutPhase;
 
             Log.d("TAG",output);
             // Put pin on MAP
